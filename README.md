@@ -91,8 +91,8 @@ It features an **AI-powered companion** (powered by Google Gemini API) to offer 
     🌐 Community support groups
     
     🎮 Gamified challenges & achievements
-    
-    🤝 Contributing
+
+🤝 Contributing
 
       Contributions, issues, and feature requests are welcome!
       Feel free to fork this repo and submit a pull request.
