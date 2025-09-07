@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Mindful Exercises</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen transition-all duration-500 bg-gray-900 text-white" id="body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 dark-glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">🧠</span>
+                        </div>
+                        <span class="text-xl font-bold text-white" id="logo-text">MindMate</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-6" id="nav-menu">
+                    <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="features.html" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="dashboard.html" class="hover:text-purple-400 transition-colors" id="dashboard-nav" style="display: none;">Dashboard</a>
+                    <a href="chat.html" class="hover:text-purple-400 transition-colors" id="chat-nav" style="display: none;">Chat</a>
+                    <a href="activities.html" class="hover:text-purple-400 transition-colors" id="activities-nav" style="display: none;">Activities</a>
+                    <a href="exercise.html" class="hover:text-purple-400 transition-colors" id="exercise-nav">Mindful Exercises</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
+                        <span class="text-purple-400" id="user-name">Welcome!</span>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Get Started Button -->
+                    <a href="auth.html" id="get-started-btn" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Exercise Section -->
+    <section id="exercise" class="min-h-screen pt-16 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-6 text-white">Mindful Exercises</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Take a moment to relax and recenter yourself with these guided exercises.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 4-7-8 Breathing -->
+                <div class="dark-glass rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">4-7-8 Breathing</h3>
+                    <p class="text-gray-300 mb-4">A calming breath pattern to reduce anxiety and promote relaxation.</p>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">Duration:</span>
+                        <div class="flex space-x-2 mt-2">
+                            <button class="duration-btn bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-full" data-duration="60">1 min</button>
+                            <button class="duration-btn bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-full" data-duration="180">3 min</button>
+                            <button class="duration-btn bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-full" data-duration="300">5 min</button>
+                            <button class="duration-btn bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-full" data-duration="600">10 min</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">What you'll do:</span>
+                        <ul class="list-disc list-inside text-gray-300 mt-2">
+                            <li>Inhale through your nose for 4 counts</li>
+                            <li>Hold your breath for 7 counts</li>
+                            <li>Exhale through your mouth for 8 counts</li>
+                        </ul>
+                    </div>
+                    <button class="start-exercise-btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full w-full" data-exercise="breathing">Start</button>
+                </div>
+
+                <!-- Body Scan Meditation -->
+                <div class="dark-glass rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">Body Scan Meditation</h3>
+                    <p class="text-gray-300 mb-4">Progressive relaxation focusing on different parts of your body.</p>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">Duration:</span>
+                        <div class="flex space-x-2 mt-2">
+                            <button class="duration-btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full" data-duration="300">5 min</button>
+                            <button class="duration-btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full" data-duration="600">10 min</button>
+                            <button class="duration-btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full" data-duration="900">15 min</button>
+                            <button class="duration-btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full" data-duration="1200">20 min</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">What you'll do:</span>
+                        <ul class="list-disc list-inside text-gray-300 mt-2">
+                            <li>Lie down or sit comfortably</li>
+                            <li>Start at the top of your head and slowly scan down to your toes</li>
+                            <li>Notice any sensations without judgment</li>
+                        </ul>
+                    </div>
+                    <button class="start-exercise-btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full w-full" data-exercise="bodyscan">Start</button>
+                </div>
+
+                <!-- Mindful Breathing -->
+                <div class="dark-glass rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">Mindful Breathing</h3>
+                    <p class="text-gray-300 mb-4">Simple awareness of your natural breath rhythm.</p>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">Duration:</span>
+                        <div class="flex space-x-2 mt-2">
+                            <button class="duration-btn bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-full" data-duration="180">3 min</button>
+                            <button class="duration-btn bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-full" data-duration="300">5 min</button>
+                            <button class="duration-btn bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-full" data-duration="600">10 min</button>
+                            <button class="duration-btn bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-full" data-duration="900">15 min</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">What you'll do:</span>
+                        <ul class="list-disc list-inside text-gray-300 mt-2">
+                            <li>Focus on your natural breathing</li>
+                            <li>Notice the breath entering and leaving your body</li>
+                            <li>Gently bring your attention back when your mind wanders</li>
+                        </ul>
+                    </div>
+                    <button class="start-exercise-btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full w-full" data-exercise="mindfulbreathing">Start</button>
+                </div>
+
+                <!-- Gratitude Meditation -->
+                <div class="dark-glass rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">Gratitude Meditation</h3>
+                    <p class="text-gray-300 mb-4">Cultivate appreciation and positive emotions.</p>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">Duration:</span>
+                        <div class="flex space-x-2 mt-2">
+                            <button class="duration-btn bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full" data-duration="300">5 min</button>
+                            <button class="duration-btn bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full" data-duration="600">10 min</button>
+                            <button class="duration-btn bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full" data-duration="900">15 min</button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-semibold text-white">What you'll do:</span>
+                        <ul class="list-disc list-inside text-gray-300 mt-2">
+                            <li>Think of three things you're grateful for</li>
+                            <li>Focus on the feeling of appreciation for those things</li>
+                            <li>Allow the positive feelings to fill your body</li>
+                        </ul>
+                    </div>
+                    <button class="start-exercise-btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full w-full" data-exercise="gratitude">Start</button>
+                </div>
+            </div>
+
+            <!-- Exercise Player -->
+            <div id="exercise-player" class="hidden fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50">
+                <div class="dark-glass rounded-3xl p-8 text-center max-w-lg w-full">
+                    <h3 id="player-title" class="text-3xl font-bold text-white mb-6"></h3>
+                    <div id="player-visualizer" class="w-48 h-48 bg-purple-500 rounded-full flex items-center justify-center mx-auto transition-transform duration-2000 ease-in-out transform scale-100 mb-6">
+                        <span id="player-text" class="text-2xl font-semibold text-white"></span>
+                    </div>
+                    <div id="player-timer" class="text-5xl font-bold text-white mb-6"></div>
+                    <p id="player-instructions" class="text-lg text-gray-300 mb-6"></p>
+                    <button id="close-player-btn" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full">Stop</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/exercise.js"></script>
+</body>
+</html>

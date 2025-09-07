@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen transition-all duration-500 bg-gray-900 text-white" id="body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 dark-glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">🧠</span>
+                        </div>
+                        <span class="text-xl font-bold text-white" id="logo-text">MindMate</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-6" id="nav-menu">
+                    <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="features.html" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="dashboard.html" class="hover:text-purple-400 transition-colors" id="dashboard-nav" style="display: none;">Dashboard</a>
+                    <a href="chat.html" class="hover:text-purple-400 transition-colors" id="chat-nav" style="display: none;">Chat</a>
+                    <a href="activities.html" class="hover:text-purple-400 transition-colors" id="activities-nav" style="display: none;">Activities</a>
+                    <a href="exercise.html" class="hover:text-purple-400 transition-colors" id="exercise-nav">Mindful Exercises</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
+                        <span class="text-purple-400" id="user-name">Welcome!</span>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Get Started Button -->
+                    <a href="auth.html" id="get-started-btn" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="min-h-screen pt-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="mb-8">
+                <h2 class="text-4xl font-bold text-white mb-2">Your Wellness Dashboard</h2>
+                <p class="text-gray-300">Comprehensive insights into your mental and physical health</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                <!-- Today's Summary -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Today's Summary</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Mood</span>
+                            <span class="text-2xl" id="today-mood">😊</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Exercise</span>
+                            <span class="text-green-400 font-semibold" id="today-exercise">0 min</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Sleep</span>
+                            <span class="text-blue-400 font-semibold" id="today-sleep">0 hrs</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Work Stress</span>
+                            <span class="text-orange-400 font-semibold" id="today-stress">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Progress -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Weekly Progress</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">Exercise Goal</span>
+                                <span class="text-green-400" id="exercise-progress">0/150 min</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-green-400 to-teal-500 h-2 rounded-full" style="width: 0%" id="exercise-bar"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">Sleep Goal</span>
+                                <span class="text-blue-400" id="sleep-progress">0/56 hrs</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-blue-400 to-purple-500 h-2 rounded-full" style="width: 0%" id="sleep-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Score -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Health Score</h3>
+                    <div class="text-center">
+                        <div class="relative w-32 h-32 mx-auto mb-4">
+                            <svg class="w-32 h-32 transform -rotate-90">
+                                <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="transparent" class="text-gray-700"/>
+                                <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="transparent" stroke-linecap="round" class="text-purple-500 progress-ring" stroke-dasharray="351.86" stroke-dashoffset="351.86" id="health-score-ring"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-3xl font-bold text-white" id="health-score">0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">Overall Wellness</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Section -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <!-- Mood Chart -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Mood Trends (7 Days)</h3>
+                    <canvas id="moodChart" width="400" height="200"></canvas>
+                </div>
+                
+                <!-- Activity Chart -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Activity Overview</h3>
+                    <canvas id="activityChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- AI Insights -->
+            <div class="dark-glass rounded-3xl p-6">
+                <h3 class="text-2xl font-semibold text-white mb-6">AI Health Insights</h3>
+                <div id="ai-insights" class="space-y-4">
+                    <div class="bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl p-4 border border-purple-500/30">
+                        <div class="flex items-start space-x-3">
+                            <div class="text-2xl">🧠</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Welcome to MindMate!</h4>
+                                <p class="text-gray-300">Start logging your activities to receive personalized health insights and recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

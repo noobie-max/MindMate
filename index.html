@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Your AI Mental Wellness Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen transition-all duration-500 bg-gray-900 text-white" id="body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 dark-glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">🧠</span>
+                    </div>
+                    <span class="text-xl font-bold text-white" id="logo-text">MindMate</span>
+                </div>
+                
+                <div class="flex items-center space-x-6" id="nav-menu">
+                    <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="features.html" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="dashboard.html" class="hover:text-purple-400 transition-colors" id="dashboard-nav" style="display: none;">Dashboard</a>
+                    <a href="chat.html" class="hover:text-purple-400 transition-colors" id="chat-nav" style="display: none;">Chat</a>
+                    <a href="activities.html" class="hover:text-purple-400 transition-colors" id="activities-nav" style="display: none;">Activities</a>
+                    <a href="exercise.html" class="hover:text-purple-400 transition-colors" id="exercise-nav">Mindful Exercises</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
+                        <span class="text-purple-400" id="user-name">Welcome!</span>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Get Started Button -->
+                    <a href="auth.html" id="get-started-btn" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen pt-16 dark-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center fade-in">
+                <div class="floating-animation mb-8">
+                    <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-purple-500 via-blue-500 to-teal-400 flex items-center justify-center text-6xl pulse-glow">
+                        🧠
+                    </div>
+                </div>
+                
+                <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">
+                    Welcome to MindMate
+                </h1>
+                
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Your AI-powered mental wellness companion. Get personalized support, track your mood, practice mindfulness, and build healthier habits - all in a secure, empathetic environment.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <a href="auth.html" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all transform hover:scale-105">
+                        Start Your Journey
+                    </a>
+                    <a href="features.html" class="border-2 border-purple-400 text-purple-400 px-8 py-4 rounded-full text-lg font-semibold hover:bg-purple-400 hover:text-white transition-all">
+                        Learn More
+                    </a>
+                </div>
+                
+                <!-- Feature Cards Preview -->
+                <div class="grid md:grid-cols-3 gap-8 mt-16">
+                    <div class="feature-card dark-glass rounded-2xl p-6 text-center">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">AI Chatbot</h3>
+                        <p class="text-gray-300">Empathetic conversations with advanced AI</p>
+                    </div>
+                    <div class="feature-card dark-glass rounded-2xl p-6 text-center">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Activity Tracking</h3>
+                        <p class="text-gray-300">Monitor your wellness journey with detailed insights</p>
+                    </div>
+                    <div class="feature-card dark-glass rounded-2xl p-6 text-center">
+                        <div class="text-4xl mb-4">🧘</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Mindfulness</h3>
+                        <p class="text-gray-300">Guided meditation and breathing exercises</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/firebase.js"></script>
+    <script>
+       const firebaseConfig = {
+            apiKey: "",
+            authDomain: "",
+            projectId: "",
+            storageBucket: "",
+            messagingSenderId: "",
+            appId: ""
+        };
+        FirebaseApp.init(firebaseConfig);
+    </script>
+</body>
+</html>

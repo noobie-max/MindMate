@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Features</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen transition-all duration-500 bg-gray-900 text-white" id="body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 dark-glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">🧠</span>
+                        </div>
+                        <span class="text-xl font-bold text-white" id="logo-text">MindMate</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-6" id="nav-menu">
+                    <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="features.html" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="dashboard.html" class="hover:text-purple-400 transition-colors" id="dashboard-nav" style="display: none;">Dashboard</a>
+                    <a href="chat.html" class="hover:text-purple-400 transition-colors" id="chat-nav" style="display: none;">Chat</a>
+                    <a href="activities.html" class="hover:text-purple-400 transition-colors" id="activities-nav" style="display: none;">Activities</a>
+                    <a href="exercise.html" class="hover:text-purple-400 transition-colors" id="exercise-nav">Mindful Exercises</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
+                        <span class="text-purple-400" id="user-name">Welcome!</span>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Get Started Button -->
+                    <a href="auth.html" id="get-started-btn" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Features Section -->
+    <section id="features" class="min-h-screen pt-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-6 text-white">Powerful Features</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Comprehensive mental wellness tools designed to support your journey to better mental health
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Feature 1 -->
+                <div class="dark-glass rounded-3xl p-8 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center text-2xl mr-4">
+                            🔐
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Secure Authentication</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Two-factor authentication with email OTP, secure password storage, and GDPR-compliant data handling.</p>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Email OTP verification</li>
+                        <li>• Encrypted password storage</li>
+                        <li>• Session management</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="dark-glass rounded-3xl p-8 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center text-2xl mr-4">
+                            💬
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Advanced AI Chatbot</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Intelligent conversations with context awareness, emotion detection, and personalized therapeutic responses.</p>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Context-aware conversations</li>
+                        <li>• Emotion analysis</li>
+                        <li>• Therapeutic techniques</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="dark-glass rounded-3xl p-8 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-teal-500 flex items-center justify-center text-2xl mr-4">
+                            🏃
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Activity Tracking</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Comprehensive tracking of exercise, work habits, sleep patterns, and wellness activities.</p>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Exercise logging</li>
+                        <li>• Work productivity tracking</li>
+                        <li>• Sleep analysis</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="dark-glass rounded-3xl p-8 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-orange-400 to-red-500 flex items-center justify-center text-2xl mr-4">
+                            📊
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Health Analytics</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">AI-powered insights analyzing your activities, mood patterns, and providing personalized recommendations.</p>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Pattern recognition</li>
+                        <li>• Health correlations</li>
+                        <li>• Predictive insights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Activities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen transition-all duration-500 bg-gray-900 text-white" id="body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 dark-glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">🧠</span>
+                        </div>
+                        <span class="text-xl font-bold text-white" id="logo-text">MindMate</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-6" id="nav-menu">
+                    <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="features.html" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="dashboard.html" class="hover:text-purple-400 transition-colors" id="dashboard-nav" style="display: none;">Dashboard</a>
+                    <a href="chat.html" class="hover:text-purple-400 transition-colors" id="chat-nav" style="display: none;">Chat</a>
+                    <a href="activities.html" class="hover:text-purple-400 transition-colors" id="activities-nav" style="display: none;">Activities</a>
+                    <a href="exercise.html" class="hover:text-purple-400 transition-colors" id="exercise-nav">Mindful Exercises</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
+                        <span class="text-purple-400" id="user-name">Welcome!</span>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Get Started Button -->
+                    <a href="auth.html" id="get-started-btn" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Activities Section -->
+    <section id="activities" class="min-h-screen pt-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="mb-8">
+                <h2 class="text-4xl font-bold text-white mb-2">Activity Tracker</h2>
+                <p class="text-gray-300">Log and monitor your daily activities for better health insights</p>
+            </div>
+
+            <!-- Activity Input Forms -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                <!-- Exercise Tracker -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-4 flex items-center">
+                        <span class="mr-3">🏃</span>Exercise
+                    </h3>
+                    <div class="space-y-4">
+                        <select id="exercise-type" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                            <option value="">Select Exercise</option>
+                            <option value="running">Running</option>
+                            <option value="walking">Walking</option>
+                            <option value="cycling">Cycling</option>
+                            <option value="swimming">Swimming</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="weightlifting">Weight Lifting</option>
+                            <option value="cardio">Cardio</option>
+                        </select>
+                        <input type="number" id="exercise-duration" placeholder="Duration (minutes)" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                        <input type="number" id="exercise-intensity" placeholder="Intensity (1-10)" min="1" max="10" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                        <button onclick="logExercise()" class="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                            Log Exercise
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Work Tracker -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-4 flex items-center">
+                        <span class="mr-3">💼</span>Work
+                    </h3>
+                    <div class="space-y-4">
+                        <input type="number" id="work-hours" placeholder="Hours worked" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                        <select id="work-stress" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                            <option value="">Stress Level</option>
+                            <option value="1">Very Low</option>
+                            <option value="2">Low</option>
+                            <option value="3">Moderate</option>
+                            <option value="4">High</option>
+                            <option value="5">Very High</option>
+                        </select>
+                        <select id="work-productivity" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                            <option value="">Productivity</option>
+                            <option value="1">Very Low</option>
+                            <option value="2">Low</option>
+                            <option value="3">Average</option>
+                            <option value="4">High</option>
+                            <option value="5">Very High</option>
+                        </select>
+                        <button onclick="logWork()" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                            Log Work Day
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sleep & Wellness -->
+                <div class="dark-glass rounded-3xl p-6">
+                    <h3 class="text-2xl font-semibold text-white mb-4 flex items-center">
+                        <span class="mr-3">😴</span>Sleep & Wellness
+                    </h3>
+                    <div class="space-y-4">
+                        <input type="number" id="sleep-hours" placeholder="Sleep hours" step="0.5" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                        <select id="sleep-quality" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                            <option value="">Sleep Quality</option>
+                            <option value="1">Poor</option>
+                            <option value="2">Fair</option>
+                            <option value="3">Good</option>
+                            <option value="4">Very Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                        <select id="mood-rating" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none">
+                            <option value="">Overall Mood</option>
+                            <option value="1">Very Sad 😢</option>
+                            <option value="2">Sad 😞</option>
+                            <option value="3">Neutral 😐</option>
+                            <option value="4">Happy 😊</option>
+                            <option value="5">Very Happy 😄</option>
+                        </select>
+                        <button onclick="logWellness()" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                            Log Wellness
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="dark-glass rounded-3xl p-6">
+                <h3 class="text-2xl font-semibold text-white mb-6">Today's Activities</h3>
+                <div id="recent-activities" class="space-y-4">
+                    <div class="text-center text-gray-400 py-8">
+                        <div class="text-4xl mb-4">📝</div>
+                        <p>No activities logged today. Start tracking your wellness journey!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/activities.js"></script>
+</body>
+</html>

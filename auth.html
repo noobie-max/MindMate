@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen transition-all duration-500 bg-gray-900 text-white" id="body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 dark-glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">🧠</span>
+                        </div>
+                        <span class="text-xl font-bold text-white" id="logo-text">MindMate</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-6" id="nav-menu">
+                    <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="features.html" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="dashboard.html" class="hover:text-purple-400 transition-colors" id="dashboard-nav" style="display: none;">Dashboard</a>
+                    <a href="chat.html" class="hover:text-purple-400 transition-colors" id="chat-nav" style="display: none;">Chat</a>
+                    <a href="activities.html" class="hover:text-purple-400 transition-colors" id="activities-nav" style="display: none;">Activities</a>
+                    <a href="exercise.html" class="hover:text-purple-400 transition-colors" id="exercise-nav">Mindful Exercises</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
+                        <span class="text-purple-400" id="user-name">Welcome!</span>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Get Started Button -->
+                    <a href="auth.html" id="get-started-btn" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Authentication Section -->
+    <section id="auth" class="min-h-screen pt-16 bg-gray-900">
+        <div class="max-w-md mx-auto px-4 py-20">
+            <div class="dark-glass rounded-3xl p-8">
+                <div class="text-center mb-8">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-3xl mb-4">
+                        🧠
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-2" id="auth-title">Welcome Back</h2>
+                    <p class="text-gray-300" id="auth-subtitle">Sign in to continue your wellness journey</p>
+                </div>
+                
+                <!-- Login Form -->
+                <div id="login-form">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="login-email" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none transition-colors" placeholder="Enter your email">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none transition-colors" placeholder="Enter your password">
+                        </div>
+                        
+                        <button onclick="signIn()" class="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                            Sign In
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-form" class="hidden">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                            <input type="text" id="signup-name" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none transition-colors" placeholder="Enter your full name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="signup-email" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none transition-colors" placeholder="Enter your email">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                            <input type="password" id="signup-password" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none transition-colors" placeholder="Create a password">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
+                            <input type="password" id="signup-confirm-password" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 text-white focus:border-purple-500 focus:outline-none transition-colors" placeholder="Confirm your password">
+                        </div>
+                        
+                        <button onclick="signUp()" class="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                            Create Account
+                        </button>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="text-center mt-6">
+                    <p class="text-gray-400">
+                        <span id="auth-switch-text">Don't have an account?</span> 
+                        <button class="text-purple-400 hover:text-purple-300" onclick="toggleAuthMode()" id="auth-switch-btn">Sign up</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/firebase.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "",
+            authDomain: "",
+            projectId: "",
+            storageBucket: "",
+            messagingSenderId: "",
+            appId: ""
+        };
+        FirebaseApp.init(firebaseConfig);
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
